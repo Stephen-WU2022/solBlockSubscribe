@@ -19,7 +19,9 @@
 
 # Go workspace file
 go.work
-go.work.sum
-
-# env file
-.env
+*.log
+log/
+.idea/
+key/
+.DS_Store
+.log
