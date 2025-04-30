@@ -136,7 +136,7 @@ func (b *Block) setIsErr(isErr bool) {
 }
 
 // getErr returns the error state
-func (b *Block) getIsErr() bool {
+func (b *Block) GetIsErr() bool {
 	b.isErr.RLock()
 	defer b.isErr.RUnlock()
 	return b.isErr.onErr
