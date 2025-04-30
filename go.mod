@@ -1,4 +1,4 @@
-module solBlockSubscribe
+module github.com/Stephen-WU2022/solBlockSubscribe
 
 go 1.19
 
