@@ -26,7 +26,7 @@ func TestNewBlock(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	logger := log.New()
 	block := NewBlock("wss://dimensional-damp-snow.solana-mainnet.quiknode.pro/07ad4b87831307c0820ca68fa0cd37262f3c85af/", ctx, logger)
-	block.blockStream(nil)
+	block.BlockStream(nil)
 	ch := block.SubscribeBlock()
 	start := time.Now()
 	go func() {

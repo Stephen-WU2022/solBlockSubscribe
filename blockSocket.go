@@ -31,7 +31,7 @@ type Block struct {
 	}
 }
 
-func (b *Block) blockStream(httpHeader http.Header) {
+func (b *Block) BlockStream(httpHeader http.Header) {
 	childCtx, cancel := context.WithCancel(b.ctx)
 	b.cancel = &cancel
 	b.httpHeader = httpHeader
