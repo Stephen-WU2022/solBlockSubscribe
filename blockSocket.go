@@ -74,7 +74,7 @@ func (b *Block) blockSocket(ctx context.Context) error {
 	sub, err := wsClient.BlockSubscribe(
 		ws.NewBlockSubscribeFilterAll(),
 		&ws.BlockSubscribeOpts{
-			Commitment:                     rpc.CommitmentConfirmed,
+			Commitment:                     rpc.CommitmentProcessed,
 			Encoding:                       solana.EncodingBase64,
 			TransactionDetails:             rpc.TransactionDetailsFull,
 			MaxSupportedTransactionVersion: ptrUint64(0), // support v0 txns :contentReference[oaicite:1]{index=1}
@@ -97,16 +97,16 @@ func (b *Block) blockSocket(ctx context.Context) error {
 	errCh := make(chan error, 1)
 	go func() {
 		for {
+			res, err := sub.Recv(ctx)
+			if err != nil {
+				errCh <- err
+				return
+			}
+
 			select {
 			case <-ctx.Done():
 				return
-			default:
-				res, err := sub.Recv(ctx)
-				if err != nil {
-					errCh <- err
-					return
-				}
-				msgCh <- res
+			case msgCh <- res:
 			}
 		}
 	}()
