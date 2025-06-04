@@ -25,3 +25,4 @@ log/
 key/
 .DS_Store
 .log
+*_test.go
