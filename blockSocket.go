@@ -123,6 +123,7 @@ func (b *Block) blockSocket(ctx context.Context) error {
 			return err
 		case blk := <-msgCh:
 			// publish to all subscribers
+			fmt.Println("Received block:", blk.Value.Slot)
 			b.publish(blk)
 		}
 	}
