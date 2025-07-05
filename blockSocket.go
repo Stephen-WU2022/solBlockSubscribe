@@ -74,7 +74,7 @@ func (b *Block) blockSocket(ctx context.Context) error {
 	sub, err := wsClient.BlockSubscribe(
 		ws.NewBlockSubscribeFilterAll(),
 		&ws.BlockSubscribeOpts{
-			Commitment:                     rpc.CommitmentProcessed,
+			Commitment:                     rpc.CommitmentConfirmed,
 			Encoding:                       solana.EncodingBase64,
 			TransactionDetails:             rpc.TransactionDetailsFull,
 			MaxSupportedTransactionVersion: ptrUint64(0), // support v0 txns :contentReference[oaicite:1]{index=1}

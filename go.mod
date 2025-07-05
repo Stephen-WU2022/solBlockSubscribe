@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/gagliardetto/solana-go v1.12.0
+	github.com/near/borsh-go v0.3.1
 	github.com/sirupsen/logrus v1.9.3
 )
 
